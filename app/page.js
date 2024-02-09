@@ -13,6 +13,7 @@ const inter = Inter({
 
 export default function Home() {
   const [getstarted, setGetstarted] = useState(false);
+  const [moreclarification, setMoreclarification] = useState(false);
   const router = useRouter();
 
   function handleGetStarted() {
@@ -115,16 +116,21 @@ export default function Home() {
         ) : (
           <></>
         )}
-
         {/* Steps Section */}
-        <div className="pt-4 flex justify-center gap-6">
+        <div
+          className={`${
+            getstarted ? "fade-in" : "fade-in"
+          } pt-4 flex justify-center gap-6`}
+        >
           <div className="w-full md:w-[70%] flex flex-col gap-4">
             <div className="p-3 w-full min-h-20 bg-white rounded-xl flex flex-col gap-2">
               <div className="flex justify-between">
                 {getstarted ? (
                   <p className="font-semibold text-[13px]">{"STEP 1/3"}</p>
                 ) : (
-                  <p className="font-semibold text-base text-[#000000] opacity-50">{"STEP 1"}</p>
+                  <p className="font-semibold text-base text-[#000000] opacity-50">
+                    {"STEP 1"}
+                  </p>
                 )}
 
                 {getstarted ? (
@@ -154,17 +160,39 @@ export default function Home() {
                       margins.
                     </p>
                   ) : (
-                    <p className="text-sm transition-all duration-300">
-                      Identify and categorize the various costs influencing
-                      margins. Costs are usually categorized as variable costs
-                      (which increase directly with an increase in sales or
-                      revenue – for example raw material costs for production),
-                      semi-variable costs (which increase with sales too, but
-                      not as linearly. For example – manpower costs for some
-                      services heavy business) and fixed costs (which are not
-                      linked to the volume of products/sales/revenue directly.
-                      For example – headquarter administration costs).
-                    </p>
+                    <>
+                      <p className="text-sm transition-all duration-300">
+                        Identify and categorize the various costs influencing
+                        margins. Costs are usually categorized as variable costs
+                        (which increase directly with an increase in sales or
+                        revenue – for example raw material costs for
+                        production), semi-variable costs (which increase with
+                        sales too, but not as linearly. For example – manpower
+                        costs for some services heavy business) and fixed costs
+                        (which are not linked to the volume of
+                        products/sales/revenue directly. For example –
+                        headquarter administration costs).
+                      </p>
+                      <button>
+                        <Image
+                          src={"/icons/from_HBR.svg"}
+                          width={65}
+                          height={9}
+                          alt="icon"
+                        />
+                      </button>
+                      <button className="mt-2 bg-[#DFEBF680] bg-opacity-50 rounded p-2 flex justify-between items-center gap-2">
+                        <p className="font-semibold text-[11px] text-[#2E5DB0]">
+                          ✨ Need more clarification on the section?
+                        </p>
+                        <Image
+                          src={"/icons/addincircle.svg"}
+                          width={13}
+                          height={12}
+                          alt="icon"
+                        />
+                      </button>
+                    </>
                   )}
                 </div>
                 {getstarted ? (
