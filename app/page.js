@@ -106,8 +106,32 @@ export default function Home() {
         {/* Steps Section */}
         <div className="pt-4 flex justify-center gap-6">
           <div className="w-full md:w-[70%] flex flex-col gap-4">
-            
-            <div className="w-full min-h-20 bg-white rounded-xl"></div>
+            <div className="p-3 w-full min-h-20 bg-white rounded-xl flex flex-col gap-2">
+              <div className="flex justify-between">
+                <p className="font-semibold text-[13px]">STEP 1/3</p>
+                <p className="font-semibold text-[15px]">4 Prompts | 5 mins</p>
+              </div>
+              <div className="flex justify-between">
+                <div>
+                  <h1 className="font-bold text-xl">Cost Identification</h1>
+                  <p className="text-sm">
+                    Identify and categorize the various costs influencing
+                    margins.
+                  </p>
+                </div>
+                <div className="px-4 py-6 bg-[#F2F2F2] flex justify-center items-center">
+                  <button className="flex justify-center items-center text-[#2E5DB0]">
+                    <span className="font-semibold">Get Started</span>
+                    <Image
+                      src={"/icons/arrow_right.svg"}
+                      width={25}
+                      height={24}
+                      alt="icon"
+                    />
+                  </button>
+                </div>
+              </div>
+            </div>
           </div>
           <div className="w-full md:w-[30%] flex flex-col gap-6">
             <div className="w-full min-h-[20rem] bg-[#000000] opacity-5 rounded-2xl"></div>
