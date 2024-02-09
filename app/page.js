@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Inter } from "next/font/google";
 import Sidebar from "./components/sidebar";
 import MobileHeader from "./components/header";
+import { useRouter } from "next/navigation";
 
 const inter = Inter({
   weight: ["400", "500", "600"],
@@ -12,6 +13,7 @@ const inter = Inter({
 
 export default function Home() {
   const [getstarted, setGetstarted] = useState(false);
+  const router = useRouter();
 
   function handleGetStarted() {
     setGetstarted(!getstarted);
@@ -25,17 +27,39 @@ export default function Home() {
       {/* Sidebar */}
       <Sidebar />
       <div className="w-full md:w-[85%] pl-4 md:pl-10 pr-6 md:pr-20 pb-4 bg-[#F8F8F8]">
-        {/* Back Button */}
-        <button className="pt-6 pb-4 flex justify-center items-center gap-4">
-          <Image
-            className=""
-            src={"/icons/left_arrow.svg"}
-            width={14}
-            height={14}
-            alt="icons"
-          />
-          <span className="font-medium text-[#2D3648]">Back</span>
-        </button>
+        {/* Section Heading */}
+        <div className="pt-6 pb-4 flex flex-col md:flex-row justify-between gap-2">
+          {/* Back Button */}
+          <button
+            onClick={() => router.back()}
+            className="flex items-center gap-4"
+          >
+            <Image
+              className=""
+              src={"/icons/left_arrow.svg"}
+              width={14}
+              height={14}
+              alt="icons"
+            />
+            <span className="font-medium text-[#2D3648]">Back</span>
+          </button>
+          <h1 className="font-bold">
+            Review the variable, semi-variable & fixed cost elements of the P&L.{" "}
+          </h1>
+          <div className="flex flex-col lg:flex-row items-center gap-2">
+            <p className="text-xs whitespace-nowrap">
+              <span className="pr-1 font-bold text-black">15 mins</span>
+              <span className="text-[#000000] opacity-50">remaining</span>
+            </p>
+            <Image
+              className="hover:text-[#F58A43] group-hover:stroke-[#F58A43]"
+              src={"/icons/progress_bar.svg"}
+              width={112}
+              height={8}
+              alt="progress_bar"
+            />
+          </div>
+        </div>
         {/* Heading Section */}
         <div className="flex justify-between items-center gap-4">
           <div>
@@ -62,7 +86,7 @@ export default function Home() {
               src={"/icons/progress_bar.svg"}
               width={112}
               height={8}
-              alt="arrow"
+              alt="progress_bar"
             />
 
             <p className="text-xs whitespace-nowrap">
@@ -88,7 +112,7 @@ export default function Home() {
                   </p>
                 ) : (
                   <button
-                    className="p-2 rounded-full bg-[#000000] bg-opacity-5"
+                    className="px-2.5 py-3 rounded-full bg-[#000000] bg-opacity-5"
                     onClick={handleGetStarted}
                   >
                     <Image

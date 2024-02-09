@@ -11,7 +11,7 @@ const buttons = [
 
 const Sidebar = () => {
   return (
-    <div className="hidden md:flex w-full md:w-[15%] h-screen bg-[#F58A43] flex-col items-center">
+    <div className="hidden md:flex sticky top-0 left-0 w-full md:w-[15%] h-screen bg-[#F58A43] flex-col items-center">
       <Image
         src={"/images/nworx_logo.svg"}
         width={146}
