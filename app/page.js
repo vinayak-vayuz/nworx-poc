@@ -43,63 +43,79 @@ export default function Home() {
             />
             <span className="font-medium text-[#2D3648]">Back</span>
           </button>
-          <h1 className="font-bold">
-            Review the variable, semi-variable & fixed cost elements of the P&L.{" "}
-          </h1>
-          <div className="flex flex-col lg:flex-row items-center gap-2">
-            <p className="text-xs whitespace-nowrap">
-              <span className="pr-1 font-bold text-black">15 mins</span>
-              <span className="text-[#000000] opacity-50">remaining</span>
-            </p>
-            <Image
-              className="hover:text-[#F58A43] group-hover:stroke-[#F58A43]"
-              src={"/icons/progress_bar.svg"}
-              width={112}
-              height={8}
-              alt="progress_bar"
-            />
-          </div>
+          {!getstarted ? (
+            <>
+              <h1 className="font-bold">
+                Review the variable, semi-variable & fixed cost elements of the
+                P&L.
+              </h1>
+              <div className="flex flex-col lg:flex-row items-center gap-2">
+                <p className="text-xs whitespace-nowrap">
+                  <span className="pr-1 font-bold text-black">15 mins</span>
+                  <span className="text-[#000000] opacity-50">remaining</span>
+                </p>
+                <Image
+                  className="hover:text-[#F58A43] group-hover:stroke-[#F58A43]"
+                  src={"/icons/progress_bar.svg"}
+                  width={112}
+                  height={8}
+                  alt="progress_bar"
+                />
+              </div>
+            </>
+          ) : (
+            <></>
+          )}
         </div>
         {/* Heading Section */}
-        <div className="flex justify-between items-center gap-4">
-          <div>
-            <p className="pb-1 text-xs font-semibold">19 Nov • Monday</p>
-            <h1 className="text-2xl font-semibold">
-              Review the variable, semi-variable & fixed cost elements of the
-              P&L.{" "}
-            </h1>
-            <p>
-              Specifically evaluate opportunity areas where there is headroom vs
-              historical benchmarks, and/or external industry benchmarks.
-            </p>
-          </div>
-          <div className="flex flex-col items-end gap-1">
-            <Image
-              className="hover:text-[#F58A43] group-hover:stroke-[#F58A43]"
-              src={"/icons/arrows.svg"}
-              width={16}
-              height={16}
-              alt="arrow"
-            />
-            <Image
-              className="hover:text-[#F58A43] group-hover:stroke-[#F58A43]"
-              src={"/icons/progress_bar.svg"}
-              width={112}
-              height={8}
-              alt="progress_bar"
-            />
+        {getstarted ? (
+          <>
+            {" "}
+            <div className="flex justify-between items-center gap-4">
+              <div>
+                <p className="pb-1 text-xs font-semibold">19 Nov • Monday</p>
+                <h1 className="text-2xl font-semibold">
+                  Review the variable, semi-variable & fixed cost elements of
+                  the P&L.{" "}
+                </h1>
+                <p>
+                  Specifically evaluate opportunity areas where there is
+                  headroom vs historical benchmarks, and/or external industry
+                  benchmarks.
+                </p>
+              </div>
+              <div className="flex flex-col items-end gap-1">
+                <Image
+                  className="hover:text-[#F58A43] group-hover:stroke-[#F58A43]"
+                  src={"/icons/arrows.svg"}
+                  width={16}
+                  height={16}
+                  alt="arrow"
+                />
+                <Image
+                  className="hover:text-[#F58A43] group-hover:stroke-[#F58A43]"
+                  src={"/icons/progress_bar.svg"}
+                  width={112}
+                  height={8}
+                  alt="progress_bar"
+                />
 
-            <p className="text-xs whitespace-nowrap">
-              <span className="pr-1 font-bold text-black">15 mins</span>
-              <span className="text-[#000000] opacity-50">remaining</span>
-            </p>
-            <p className="-mt-1 text-xs whitespace-nowrap">
-              <span className="pr-1 font-bold text-black">5 mins</span>
-              <span className="pr-1 text-[#000000] opacity-50">to</span>
-              <span className="font-bold text-[#2E5DB0]">break</span>
-            </p>
-          </div>
-        </div>
+                <p className="text-xs whitespace-nowrap">
+                  <span className="pr-1 font-bold text-black">15 mins</span>
+                  <span className="text-[#000000] opacity-50">remaining</span>
+                </p>
+                <p className="-mt-1 text-xs whitespace-nowrap">
+                  <span className="pr-1 font-bold text-black">5 mins</span>
+                  <span className="pr-1 text-[#000000] opacity-50">to</span>
+                  <span className="font-bold text-[#2E5DB0]">break</span>
+                </p>
+              </div>
+            </div>{" "}
+          </>
+        ) : (
+          <></>
+        )}
+
         {/* Steps Section */}
         <div className="pt-4 flex justify-center gap-6">
           <div className="w-full md:w-[70%] flex flex-col gap-4">
