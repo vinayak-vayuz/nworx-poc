@@ -26,6 +26,10 @@ export default function Home() {
     setMoreclarification(!moreclarification);
   }
 
+  // function expandQuestion (id) => {
+
+  // }
+
   const moreClarificationQuestions = [
     { question: "How does this apply in my business context ?" },
     { question: "Help me learn more" },
@@ -274,18 +278,27 @@ export default function Home() {
                           <div className="border-t border-opacity-5 pt-2 flex items-start justify-between gap-2">
                             <div>
                               <p className="font-semibold text-xs text-black text-opacity-50">
-                                Question 1 out of 3
+                                Question {index + 1} out of
+                                {`${" "} ${stepOneQuestions.length}`}
                               </p>
-                              <h1 className="font-medium text-lg text-black text-opacity-85">
+                              <h1
+                                className={`${
+                                  index === 0
+                                    ? "text-opacity-85"
+                                    : "text-opacity-40"
+                                } font-medium text-lg text-black text-opacity-85`}
+                              >
                                 {data.question}
                               </h1>
                             </div>
-                            <Image
-                              src={"/icons/add.svg"}
-                              width={17}
-                              height={18}
-                              alt="icon"
-                            />
+                            <button>
+                              <Image
+                                src={"/icons/add.svg"}
+                                width={17}
+                                height={18}
+                                alt="icon"
+                              />
+                            </button>
                           </div>
                         ))}
                       </div>
