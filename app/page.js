@@ -14,9 +14,10 @@ const inter = Inter({
 
 export default function Home() {
   const [getstarted, setGetstarted] = useState(true);
-  const [moreclarificationonsection, setMoreClarificationQuestion] = useState(false);
+  const [moreclarificationonsection, setMoreClarificationQuestion] =
+    useState(false);
   const [question, setQuestion] = useState(false);
-  const [modal, setModal] = useState();
+  const [questionexp, setQuestionExp] = useState();
   const router = useRouter();
 
   function handleGetStarted() {
@@ -47,10 +48,10 @@ export default function Home() {
         "What are the primary components of variable & semi-variable costs impacting gross margins?",
       answer: [
         {
-          Q1: "Need clarification on the question ?",
+          Q: "Need clarification on the question ?",
           answers: [
             {
-              Q1: "How do I connect this to my business context?",
+              Q: "How do I connect this to my business context?",
               answers: [
                 {
                   title: "Add warehouse costs as semi-variable cost",
@@ -64,13 +65,13 @@ export default function Home() {
                 },
               ],
             },
-            { Q2: "Can I skip this?" },
-            { Q3: "Why is this importatnt? " },
-            { Q4: "Simplify the question " },
-            { Q5: "I do not have enough information to answer this" },
+            { Q: "Can I skip this?" },
+            { Q: "Why is this importatnt? " },
+            { Q: "Simplify the question " },
+            { Q: "I do not have enough information to answer this" },
           ],
         },
-        { Q2: "Help me get started" },
+        { Q: "Help me get started" },
       ],
     },
     {
@@ -91,7 +92,7 @@ export default function Home() {
       return questions.id === id;
     });
     console.log(stepOneExpanded);
-    setModal(id);
+    setQuestionExp(id);
     return stepOneExpanded;
   };
   return (
@@ -340,7 +341,6 @@ export default function Home() {
                       ) : (
                         <></>
                       )}
-
                       {/* Questions Section */}
                       <motion.div
                         layout
@@ -375,7 +375,7 @@ export default function Home() {
                               >
                                 <Image
                                   src={
-                                    modal !== data.id
+                                    questionexp !== data.id
                                       ? "/icons/add.svg"
                                       : "/icons/substract.svg"
                                   }
@@ -385,69 +385,74 @@ export default function Home() {
                                 />
                               </button>
                             </div>
-                            {modal == data.id ? (
+                            {questionexp == data.id ? (
                               <>
                                 {/* More clarification on question */}
-                                <motion.div
-                                  layout
-                                  transition={{ duration: 0.5 }}
-                                  className={`${
-                                    !moreclarificationonsection ? "w-fit" : "w-full"
-                                  } my-2 bg-[#DFEBF680] bg-opacity-50 rounded p-2`}
-                                >
-                                  <button
-                                    onClick={handleMoreClarification}
-                                    className="w-full flex justify-between items-center gap-2"
+                                {data.answer.map((answer, index) => (
+                                  <motion.div
+                                    key={index}
+                                    layout
+                                    transition={{ duration: 0.5 }}
+                                    className={`${
+                                      !moreclarificationonsection
+                                        ? "w-fit"
+                                        : "w-full"
+                                    } my-2 bg-[#DFEBF680] bg-opacity-50 rounded p-2`}
                                   >
-                                    <p className="font-semibold text-[11px] text-[#2E5DB0]">
-                                      ✨ Need more clarification on the section?
-                                    </p>
-                                    <Image
-                                      src={
-                                        !moreclarificationonsection
-                                          ? "/icons/addincircle.svg"
-                                          : "/icons/addincircle_blue.svg"
-                                      }
-                                      width={13}
-                                      height={12}
-                                      alt="icon"
-                                    />
-                                  </button>
-                                  {moreclarificationonsection ? (
+                                    <button
+                                      onClick={handleMoreClarification}
+                                      className="w-full flex justify-between items-center gap-2"
+                                    >
+                                      <p className="font-semibold text-[11px] text-[#2E5DB0]">
+                                        ✨ {answer.Q}
+                                      </p>
+                                      <Image
+                                        src={
+                                          !moreclarificationonsection
+                                            ? "/icons/addincircle.svg"
+                                            : "/icons/addincircle_blue.svg"
+                                        }
+                                        width={13}
+                                        height={12}
+                                        alt="icon"
+                                      />
+                                    </button>
+                                    {/* {moreclarificationonsection ? (
                                     <>
-                                      <div className="mt-2 flex flex-wrap gap-4">
-                                        {moreClarificationQuestions.map(
-                                          (data, index) => (
-                                            <button
-                                              key={index}
-                                              className="p-2.5 bg-white rounded-3xl flex items-center gap-2"
-                                            >
-                                              <div
-                                                className={`${
-                                                  index === 1
-                                                    ? "bg-[#FFDEDF]"
-                                                    : "bg-[#DDE3EE80] bg-opacity-50"
-                                                } p-1  rounded-full flex justify-center items-center`}
-                                              >
-                                                <Image
-                                                  src={"/icons/incognito.svg"}
-                                                  width={13}
-                                                  height={12}
-                                                  alt="icon"
-                                                />
-                                              </div>
-                                              <p className="text-xs">
-                                                {data.question}
-                                              </p>
-                                            </button>
-                                          )
+                                    <div className="mt-2 flex flex-wrap gap-4">
+                                    {moreClarificationQuestions.map(
+                                      (data, index) => (
+                                        <button
+                                        key={index}
+                                        className="p-2.5 bg-white rounded-3xl flex items-center gap-2"
+                                        >
+                                        <div
+                                        className={`${
+                                          index === 1
+                                          ? "bg-[#FFDEDF]"
+                                          : "bg-[#DDE3EE80] bg-opacity-50"
+                                        } p-1  rounded-full flex justify-center items-center`}
+                                        >
+                                        <Image
+                                        src={"/icons/incognito.svg"}
+                                        width={13}
+                                        height={12}
+                                        alt="icon"
+                                        />
+                                        </div>
+                                        <p className="text-xs">
+                                        {data.question}
+                                        </p>
+                                        </button>
+                                        )
                                         )}
-                                      </div>
-                                    </>
-                                  ) : (
-                                    <></>
-                                  )}
-                                </motion.div>
+                                        </div>
+                                        </>
+                                        ) : (
+                                          <></>
+                                        )} */}
+                                  </motion.div>
+                                ))}
                                 <textarea
                                   placeholder="Type to respond"
                                   className="p-2 w-full min-h-[10rem] bg-[#F8F8F8] outline-none text-sm rounded"
