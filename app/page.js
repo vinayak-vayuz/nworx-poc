@@ -25,6 +25,9 @@ export default function Home() {
   function handleMoreClarification() {
     setMoreclarification(!moreclarification);
   }
+  function handleQuestions() {
+    setQuestion(!question);
+  }
 
   // function expandQuestion (id) => {
 
@@ -186,7 +189,10 @@ export default function Home() {
                 ) : (
                   <button
                     className="px-2.5 py-3 rounded-full bg-[#000000] bg-opacity-5"
-                    onClick={handleGetStarted}
+                    onClick={() => {
+                      handleGetStarted();
+                      handleQuestions(); 
+                    }}
                   >
                     <Image
                       src={"/icons/arrow_up.svg"}
@@ -307,41 +313,79 @@ export default function Home() {
                       )}
 
                       {/* Questions Section */}
-                      <div className="pt-14 flex flex-col gap-8">
+                      <motion.div
+                        layout
+                        transition={{ duration: 0.5 }}
+                        className={`${
+                          !question ? "pt-14" : "pt-4"
+                        } flex flex-col gap-8`}
+                      >
                         {stepOneQuestions.map((data, index) => (
-                          <div className="border-t border-opacity-5 pt-2 flex items-start justify-between gap-2">
-                            <div>
-                              <p className="font-semibold text-xs text-black text-opacity-50">
-                                Question {index + 1} out of
-                                {`${" "} ${stepOneQuestions.length}`}
-                              </p>
-                              <h1
-                                className={`${
-                                  index === 0
-                                    ? "text-opacity-85"
-                                    : "text-opacity-40"
-                                } font-medium text-lg text-black text-opacity-85`}
+                          <div className="border-t border-opacity-5 pt-2">
+                            <div className="flex items-start justify-between gap-2">
+                              <div>
+                                <p className="font-semibold text-xs text-black text-opacity-50">
+                                  Question {index + 1} out of
+                                  {`${" "} ${stepOneQuestions.length}`}
+                                </p>
+                                <h1
+                                  className={`${
+                                    index === 0
+                                      ? "text-opacity-85"
+                                      : "text-opacity-40"
+                                  } font-medium text-lg text-black text-opacity-85`}
+                                >
+                                  {data.question}
+                                </h1>
+                              </div>
+                              <button
+                                onClick={() => handleStepOneQuestions(data.id)}
                               >
-                                {data.question}
-                              </h1>
+                                <Image
+                                  src={
+                                    !question
+                                      ? "/icons/add.svg"
+                                      : "/icons/substract.svg"
+                                  }
+                                  width={17}
+                                  height={18}
+                                  alt="icon"
+                                />
+                              </button>
                             </div>
-                            <button
-                              onClick={() => handleStepOneQuestions(data.id)}
-                            >
-                              <Image
-                                src={
-                                  !question
-                                    ? "/icons/add.svg"
-                                    : "/icons/substract.svg"
-                                }
-                                width={17}
-                                height={18}
-                                alt="icon"
-                              />
-                            </button>
+                            {/* {stepOneExpanded ? (
+                              <div className="mt-2 flex flex-wrap gap-4">
+                                {moreClarificationQuestions.map(
+                                  (data, index) => (
+                                    <button
+                                      key={index}
+                                      className="p-2.5 bg-white rounded-3xl flex items-center gap-2"
+                                    >
+                                      <div
+                                        className={`${
+                                          index === 1
+                                            ? "bg-[#FFDEDF]"
+                                            : "bg-[#DDE3EE80] bg-opacity-50"
+                                        } p-1  rounded-full flex justify-center items-center`}
+                                      >
+                                        <Image
+                                          src={"/icons/incognito.svg"}
+                                          width={13}
+                                          height={12}
+                                          alt="icon"
+                                        />
+                                      </div>
+                                      <p className="text-xs">{data.question}</p>
+                                    </button>
+                                  )
+                                )}
+                              </div>
+                            ) : (
+                              <></>
+                            )} */}
                           </div>
                         ))}
-                      </div>
+                      </motion.div>
                     </>
                   )}
                 </div>
