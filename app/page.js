@@ -16,6 +16,7 @@ export default function Home() {
   const [getstarted, setGetstarted] = useState(true);
   const [moreclarification, setMoreclarification] = useState(false);
   const [question, setQuestion] = useState(false);
+  const [modal, setModal] = useState();
   const router = useRouter();
 
   function handleGetStarted() {
@@ -63,6 +64,7 @@ export default function Home() {
       return questions.id === id;
     });
     console.log(stepOneExpanded);
+    setModal(id);
     return stepOneExpanded;
   };
   return (
@@ -191,7 +193,7 @@ export default function Home() {
                     className="px-2.5 py-3 rounded-full bg-[#000000] bg-opacity-5"
                     onClick={() => {
                       handleGetStarted();
-                      handleQuestions(); 
+                      handleQuestions();
                     }}
                   >
                     <Image
@@ -343,7 +345,7 @@ export default function Home() {
                               >
                                 <Image
                                   src={
-                                    !question
+                                    modal !== data.id
                                       ? "/icons/add.svg"
                                       : "/icons/substract.svg"
                                   }
@@ -353,36 +355,41 @@ export default function Home() {
                                 />
                               </button>
                             </div>
-                            {/* {stepOneExpanded ? (
-                              <div className="mt-2 flex flex-wrap gap-4">
-                                {moreClarificationQuestions.map(
-                                  (data, index) => (
-                                    <button
-                                      key={index}
-                                      className="p-2.5 bg-white rounded-3xl flex items-center gap-2"
-                                    >
-                                      <div
-                                        className={`${
-                                          index === 1
-                                            ? "bg-[#FFDEDF]"
-                                            : "bg-[#DDE3EE80] bg-opacity-50"
-                                        } p-1  rounded-full flex justify-center items-center`}
+                            {modal == data.id ? (
+                              <>
+                                <div className="mt-2 flex flex-wrap gap-4">
+                                  {moreClarificationQuestions.map(
+                                    (data, index) => (
+                                      <button
+                                        key={index}
+                                        className="p-2.5 bg-white rounded-3xl flex items-center gap-2"
                                       >
-                                        <Image
-                                          src={"/icons/incognito.svg"}
-                                          width={13}
-                                          height={12}
-                                          alt="icon"
-                                        />
-                                      </div>
-                                      <p className="text-xs">{data.question}</p>
-                                    </button>
-                                  )
-                                )}
-                              </div>
+                                        <div
+                                          className={`${
+                                            index === 1
+                                              ? "bg-[#FFDEDF]"
+                                              : "bg-[#DDE3EE80] bg-opacity-50"
+                                          } p-1  rounded-full flex justify-center items-center`}
+                                        >
+                                          <Image
+                                            src={"/icons/incognito.svg"}
+                                            width={13}
+                                            height={12}
+                                            alt="icon"
+                                          />
+                                        </div>
+                                        <p className="text-xs">
+                                          {data.question}
+                                        </p>
+                                      </button>
+                                    )
+                                  )}
+                                </div>
+                                <textarea placeholder="Type to respond" className="p-2 w-full min-h-[10rem] bg-[#F8F8F8] outline-none text-sm rounded" type="text" />
+                              </>
                             ) : (
                               <></>
-                            )} */}
+                            )}
                           </div>
                         ))}
                       </motion.div>
