@@ -15,6 +15,7 @@ const inter = Inter({
 export default function Home() {
   const [getstarted, setGetstarted] = useState(false);
   const [moreclarification, setMoreclarification] = useState(false);
+  const [question, setQuestion] = useState(false);
   const router = useRouter();
 
   function handleGetStarted() {
@@ -29,6 +30,21 @@ export default function Home() {
     { question: "How does this apply in my business context ?" },
     { question: "Help me learn more" },
     { question: "I dont find this relevant to me" },
+  ];
+
+  const stepOneQuestions = [
+    {
+      question:
+        "What are the primary components of variable & semi-variable costs impacting gross margins?",
+    },
+    {
+      question:
+        "Which are the various fixed costs and to what extent do they impact margin profile of the business?",
+    },
+    {
+      question:
+        "Are there any hidden or overlooked costs that need consideration?",
+    },
   ];
   return (
     <main
@@ -127,7 +143,7 @@ export default function Home() {
         ) : (
           <></>
         )}
-        {/* Steps Section */}
+        {/* Step Section */}
         <motion.div
           layout
           transition={{ duration: 0.5 }}
@@ -136,6 +152,7 @@ export default function Home() {
           className={`pt-4 flex justify-center gap-6`}
         >
           <div className="w-full md:w-[70%] flex flex-col gap-4">
+            {/* Step 1 */}
             <div className="p-3 w-full min-h-20 bg-white rounded-xl flex flex-col gap-2">
               <div className="flex justify-between">
                 {getstarted ? (
@@ -228,7 +245,13 @@ export default function Home() {
                                   key={index}
                                   className="p-2.5 bg-white rounded-3xl flex items-center gap-2"
                                 >
-                                  <div className={`${index === 1 ? "bg-[#FFDEDF]" : "bg-[#DDE3EE80] bg-opacity-50" } p-1  rounded-full flex justify-center items-center`}>
+                                  <div
+                                    className={`${
+                                      index === 1
+                                        ? "bg-[#FFDEDF]"
+                                        : "bg-[#DDE3EE80] bg-opacity-50"
+                                    } p-1  rounded-full flex justify-center items-center`}
+                                  >
                                     <Image
                                       src={"/icons/incognito.svg"}
                                       width={13}
@@ -246,24 +269,25 @@ export default function Home() {
                         )}
                       </motion.div>
                       {/* Questions Section */}
-                      <div className="pt-14">
-                        <div className="flex items-start justify-between gap-2">
-                          <div>
-                            <p className="font-semibold text-xs text-black text-opacity-50">
-                              Question 1 out of 3
-                            </p>
-                            <h1 className="font-medium text-lg text-black text-opacity-85">
-                              What are the primary components of variable &
-                              semi-variable costs impacting gross margins?
-                            </h1>
+                      <div className="pt-14 flex flex-col gap-8">
+                        {stepOneQuestions.map((data, index) => (
+                          <div className="border-t border-opacity-5 pt-2 flex items-start justify-between gap-2">
+                            <div>
+                              <p className="font-semibold text-xs text-black text-opacity-50">
+                                Question 1 out of 3
+                              </p>
+                              <h1 className="font-medium text-lg text-black text-opacity-85">
+                                {data.question}
+                              </h1>
+                            </div>
+                            <Image
+                              src={"/icons/add.svg"}
+                              width={17}
+                              height={18}
+                              alt="icon"
+                            />
                           </div>
-                          <Image
-                            src={"/icons/add.svg"}
-                            width={17}
-                            height={18}
-                            alt="icon"
-                          />
-                        </div>
+                        ))}
                       </div>
                     </>
                   )}
