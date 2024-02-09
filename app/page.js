@@ -13,7 +13,7 @@ const inter = Inter({
 });
 
 export default function Home() {
-  const [getstarted, setGetstarted] = useState(false);
+  const [getstarted, setGetstarted] = useState(true);
   const [moreclarification, setMoreclarification] = useState(false);
   const [question, setQuestion] = useState(false);
   const router = useRouter();
@@ -203,7 +203,10 @@ export default function Home() {
                   {question ? (
                     <p className="text-sm text-opacity-50">
                       Identify and categorize the various costs influencing
-                      margins.... <button onClick={handleMoreClarification} className="font-bold text-sm text-[#2E5DB0]">view more ⬇️</button>
+                      margins....{" "}
+                      <button className="font-bold text-sm text-[#2E5DB0]">
+                        view more 🔽
+                      </button>
                     </p>
                   ) : (
                     <></>
