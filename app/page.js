@@ -20,6 +20,16 @@ export default function Home() {
   function handleGetStarted() {
     setGetstarted(!getstarted);
   }
+
+  function handleMoreClarification() {
+    setMoreclarification(!moreclarification);
+  }
+
+  const moreClarificationQuestions = [
+    { question: "How does this apply in my business context ?" },
+    { question: "Help me learn more" },
+    { question: "I dont find this relevant to me" },
+  ];
   return (
     <main
       className={`${inter.className} flex flex-col md:flex-row min-h-screen`}
@@ -184,17 +194,58 @@ export default function Home() {
                           alt="icon"
                         />
                       </button>
-                      <button className="mt-2 bg-[#DFEBF680] bg-opacity-50 rounded p-2 flex justify-between items-center gap-2">
-                        <p className="font-semibold text-[11px] text-[#2E5DB0]">
-                          ✨ Need more clarification on the section?
-                        </p>
-                        <Image
-                          src={"/icons/addincircle.svg"}
-                          width={13}
-                          height={12}
-                          alt="icon"
-                        />
-                      </button>
+                      {/* More clarification */}
+                      <motion.div
+                        layout
+                        transition={{ duration: 0.3 }}
+                        className={`${
+                          !moreclarification ? "w-fit" : "w-full"
+                        } mt-2 bg-[#DFEBF680] bg-opacity-50 rounded p-2`}
+                      >
+                        <button
+                          onClick={handleMoreClarification}
+                          className="w-full flex justify-between items-center gap-2"
+                        >
+                          <p className="font-semibold text-[11px] text-[#2E5DB0]">
+                            ✨ Need more clarification on the section?
+                          </p>
+                          <Image
+                            src={
+                              !moreclarification
+                                ? "/icons/addincircle.svg"
+                                : "/icons/addincircle_blue.svg"
+                            }
+                            width={13}
+                            height={12}
+                            alt="icon"
+                          />
+                        </button>
+                        {moreclarification ? (
+                          <>
+                            <div className="mt-2 flex flex-wrap gap-4">
+                              {moreClarificationQuestions.map((data, index) => (
+                                <button
+                                  key={index}
+                                  className="p-2.5 bg-white rounded-3xl flex items-center gap-2"
+                                >
+                                  <div className={`${index === 1 ? "bg-[#FFDEDF]" : "bg-[#DDE3EE80] bg-opacity-50" } p-1  rounded-full flex justify-center items-center`}>
+                                    <Image
+                                      src={"/icons/incognito.svg"}
+                                      width={13}
+                                      height={12}
+                                      alt="icon"
+                                    />
+                                  </div>
+                                  <p className="text-xs">{data.question}</p>
+                                </button>
+                              ))}
+                            </div>
+                          </>
+                        ) : (
+                          <></>
+                        )}
+                      </motion.div>
+                      {/* Questions Section */}
                       <div className="pt-14">
                         <div className="flex items-start justify-between gap-2">
                           <div>
