@@ -192,6 +192,25 @@ export default function Home() {
                           alt="icon"
                         />
                       </button>
+                      <div className="pt-14">
+                        <div className="flex items-start justify-between gap-2">
+                          <div>
+                            <p className="font-semibold text-xs text-black text-opacity-50">
+                              Question 1 out of 3
+                            </p>
+                            <h1 className="font-medium text-lg text-black text-opacity-85">
+                              What are the primary components of variable &
+                              semi-variable costs impacting gross margins?
+                            </h1>
+                          </div>
+                          <Image
+                            src={"/icons/add.svg"}
+                            width={17}
+                            height={18}
+                            alt="icon"
+                          />
+                        </div>
+                      </div>
                     </>
                   )}
                 </div>
