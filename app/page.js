@@ -6,6 +6,7 @@ import { Inter } from "next/font/google";
 import Sidebar from "./components/sidebar";
 import MobileHeader from "./components/header";
 import { useRouter } from "next/navigation";
+import Accordion from "./components/accordian";
 
 const inter = Inter({
   weight: ["400", "500", "600"],
@@ -506,6 +507,7 @@ export default function Home() {
           </div>
         </motion.div>
       </div>
+      <Accordion/>
     </main>
   );
 }
