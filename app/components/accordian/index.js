@@ -49,7 +49,7 @@ const stepOneQuestions = [
   },
 ];
 
-const SubLevelComp = ({ item, depth }) => {
+const SubLevelComp = ({ index, item, depth, isFirstDepth }) => {
   const [selected, setSelected] = useState(false);
 
   const toggle = () => {
@@ -66,6 +66,25 @@ const SubLevelComp = ({ item, depth }) => {
       transition={{ duration: 0.3 }}
       className={`level-${depth}`}
     >
+      <div className="flex justify-between items-center gap-2">
+        {isFirstDepth && (
+          <div className="flex justify-between items-center gap-2">
+            <p className="font-semibold text-xs text-black text-opacity-50">
+              Question {index + 1} out of {stepOneQuestions.length}
+            </p>
+          </div>
+        )}
+        {/* <p
+          className={classNames("title", {
+            "has-children": hasChildren(item),
+            selected,
+          })}
+          onClick={hasChildren(item) ? toggle : null}
+          style={{ cursor: hasChildren(item) ? "pointer" : "" }}
+        >
+          {hasChildren(item) && <span>{selected ? "-" : "+"}</span>}
+        </p> */}
+      </div>
       <p
         className={classNames("title", {
           "has-children": hasChildren(item),
@@ -74,13 +93,20 @@ const SubLevelComp = ({ item, depth }) => {
         onClick={hasChildren(item) ? toggle : null}
         style={{ cursor: hasChildren(item) ? "pointer" : "" }}
       >
-        {item.title} {hasChildren(item) && <span>{selected ? "-" : "+"}</span>}
+        {item.title}
+        {hasChildren(item) && <span>{selected ? "-" : "+"}</span>}
       </p>
       {selected && (
-        <div className="flex flex-wrap gap-4">
+        <div className="flex flex-wrap gap-2">
           {hasChildren(item) &&
             item.children.map((childItem, index) => (
-              <SubLevelComp item={childItem} depth={depth + 1} key={index} />
+              <SubLevelComp
+                index={index}
+                item={childItem}
+                depth={depth + 1}
+                key={index}
+                isFirstDepth={false}
+              />
             ))}
         </div>
       )}
@@ -90,9 +116,19 @@ const SubLevelComp = ({ item, depth }) => {
 
 function Accordion() {
   return (
-    <motion.div layout transition={{ duration: 0.5 }} className="mt-10">
+    <motion.div
+      layout
+      transition={{ duration: 0.5 }}
+      className="mt-10 flex flex-col gap-8"
+    >
       {stepOneQuestions.map((item, index) => (
-        <SubLevelComp item={item} depth={1} key={index} />
+        <SubLevelComp
+          index={index}
+          item={item}
+          depth={1}
+          key={index}
+          isFirstDepth={index === 0 || 1 || 2}
+        />
       ))}
     </motion.div>
   );
