@@ -35,8 +35,8 @@ const Sidebar = () => {
             />
             <span
               className={`${
-                data.label === "Act on Goals" ? "text-[#F58A43]" : ""
-              } font-semibold text-white group-hover:text-[#F58A43]`}
+                data.label === "Act on Goals" ? "text-[#F58A43]" : "text-white"
+              } font-semibold group-hover:text-[#F58A43]`}
             >
               {data.label}
             </span>
