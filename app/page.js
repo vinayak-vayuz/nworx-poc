@@ -323,7 +323,7 @@ export default function Home() {
                         } flex flex-col gap-8`}
                       >
                         {stepOneQuestions.map((data, index) => (
-                          <div className="border-t border-opacity-5 pt-2">
+                          <div key={index} className="border-t border-opacity-5 pt-2">
                             <div className="flex items-start justify-between gap-2">
                               <div>
                                 <p className="font-semibold text-xs text-black text-opacity-50">
