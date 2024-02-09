@@ -14,26 +14,28 @@ const inter = Inter({
 
 export default function Home() {
   const [getstarted, setGetstarted] = useState(true);
-  const [moreclarificationonsection, setMoreClarificationQuestion] =
-    useState(false);
   const [question, setQuestion] = useState(false);
   const [questionexp, setQuestionExp] = useState();
+  const [moreclarificationonsection, setMoreClarificationSection] =
+    useState(false);
+  const [moreclarificationonquestion, setMoreClarificationQuestion] =
+    useState(false);
+
+  // Router
   const router = useRouter();
 
   function handleGetStarted() {
     setGetstarted(!getstarted);
   }
-
-  function handleMoreClarification() {
-    setMoreClarificationQuestion(!moreclarificationonsection);
+  function handleMoreClarificationSection() {
+    setMoreClarificationSection(!moreclarificationonsection);
+  }
+  function handleMoreClarificationQuestion() {
+    setMoreClarificationQuestion(!moreclarificationonquestion);
   }
   function handleQuestions() {
     setQuestion(!question);
   }
-
-  // function expandQuestion (id) => {
-
-  // }
 
   const moreClarificationQuestions = [
     { question: "How does this apply in my business context ?" },
@@ -285,7 +287,7 @@ export default function Home() {
                             } mt-2 bg-[#DFEBF680] bg-opacity-50 rounded p-2`}
                           >
                             <button
-                              onClick={handleMoreClarification}
+                              onClick={handleMoreClarificationSection}
                               className="w-full flex justify-between items-center gap-2"
                             >
                               <p className="font-semibold text-[11px] text-[#2E5DB0]">
@@ -400,7 +402,7 @@ export default function Home() {
                                     } my-2 bg-[#DFEBF680] bg-opacity-50 rounded p-2`}
                                   >
                                     <button
-                                      onClick={handleMoreClarification}
+                                      onClick={handleMoreClarificationSection}
                                       className="w-full flex justify-between items-center gap-2"
                                     >
                                       <p className="font-semibold text-[11px] text-[#2E5DB0]">
