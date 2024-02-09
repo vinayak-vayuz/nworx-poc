@@ -45,7 +45,7 @@ export default function Home() {
           </button>
           {!getstarted ? (
             <>
-              <h1 className="font-bold">
+              <h1 className="font-bold transition-all duration-300 ease-out">
                 Review the variable, semi-variable & fixed cost elements of the
                 P&L.
               </h1>
@@ -121,7 +121,12 @@ export default function Home() {
           <div className="w-full md:w-[70%] flex flex-col gap-4">
             <div className="p-3 w-full min-h-20 bg-white rounded-xl flex flex-col gap-2">
               <div className="flex justify-between">
-                <p className="font-semibold text-[13px]">STEP 1/3</p>
+                {getstarted ? (
+                  <p className="font-semibold text-[13px]">{"STEP 1/3"}</p>
+                ) : (
+                  <p className="font-semibold text-base text-[#000000] opacity-50">{"STEP 1"}</p>
+                )}
+
                 {getstarted ? (
                   <p className="font-semibold text-[15px]">
                     4 Prompts | 5 mins
