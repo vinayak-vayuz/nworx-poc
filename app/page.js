@@ -29,7 +29,7 @@ export default function Home() {
           {buttons.map((data, index) => (
             <button key={index} className={`${data.title === "Act on Goals" ? "bg-white" : ""} group hover:bg-white p-2 rounded flex gap-2 mb-3`}>
               <Image className="hover:text-[#F58A43] group-hover:stroke-[#F58A43]" src={data.icon} width={24} height={25} alt="icons" />
-              <label className={`${inter.className} font-semibold text-white group-hover:text-[#F58A43]`}>{data.label}</label>
+              <span className={`${inter.className} font-semibold text-white group-hover:text-[#F58A43]`}>{data.label}</span>
             </button>
           ))}
         </div>
