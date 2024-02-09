@@ -18,7 +18,7 @@ const buttons = [
 export default function Home() {
   return (
     <main className={`${inter.className} flex min-h-screen`}>
-      <div className="w-full md:w-[15%] min-h-screen bg-[#F58A43] flex flex-col items-center">
+      <div className="w-full md:w-[15%] h-screen bg-[#F58A43] flex flex-col items-center">
         <Image
           src={"/images/nworx_logo.svg"}
           width={146}
@@ -51,7 +51,7 @@ export default function Home() {
           ))}
         </div>
       </div>
-      <div className="w-full md:w-[85%] pl-10 pr-20 bg-[#F8F8F8]">
+      <div className="w-full md:w-[85%] pl-10 pr-20 pb-4 bg-[#F8F8F8]">
         {/* Back Button */}
         <button className="pt-6 pb-4 flex justify-center items-center gap-4">
           <Image
