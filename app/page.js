@@ -38,18 +38,30 @@ export default function Home() {
 
   const stepOneQuestions = [
     {
+      id: 1,
       question:
         "What are the primary components of variable & semi-variable costs impacting gross margins?",
     },
     {
+      id: 2,
       question:
         "Which are the various fixed costs and to what extent do they impact margin profile of the business?",
     },
     {
+      id: 3,
       question:
         "Are there any hidden or overlooked costs that need consideration?",
     },
   ];
+
+  const handleStepOneQuestions = (id) => {
+    setQuestion(!question);
+    const stepOneExpanded = stepOneQuestions.filter((questions) => {
+      return questions.id === id;
+    });
+    console.log(stepOneExpanded);
+    return stepOneExpanded;
+  };
   return (
     <main
       className={`${inter.className} flex flex-col md:flex-row min-h-screen`}
@@ -188,6 +200,14 @@ export default function Home() {
               <div className="flex justify-between">
                 <div>
                   <h1 className="font-bold text-xl">Cost Identification</h1>
+                  {question ? (
+                    <p className="text-sm text-opacity-50">
+                      Identify and categorize the various costs influencing
+                      margins.... <button onClick={handleMoreClarification} className="font-bold text-sm text-[#2E5DB0]">view more ⬇️</button>
+                    </p>
+                  ) : (
+                    <></>
+                  )}
                   {getstarted ? (
                     <p className="text-sm">
                       Identify and categorize the various costs influencing
@@ -195,83 +215,94 @@ export default function Home() {
                     </p>
                   ) : (
                     <>
-                      <p className="text-sm transition-all duration-300">
-                        Identify and categorize the various costs influencing
-                        margins. Costs are usually categorized as variable costs
-                        (which increase directly with an increase in sales or
-                        revenue – for example raw material costs for
-                        production), semi-variable costs (which increase with
-                        sales too, but not as linearly. For example – manpower
-                        costs for some services heavy business) and fixed costs
-                        (which are not linked to the volume of
-                        products/sales/revenue directly. For example –
-                        headquarter administration costs).
-                      </p>
-                      <button>
-                        <Image
-                          src={"/icons/from_HBR.svg"}
-                          width={65}
-                          height={9}
-                          alt="icon"
-                        />
-                      </button>
-                      {/* More clarification */}
-                      <motion.div
-                        layout
-                        transition={{ duration: 0.3 }}
-                        className={`${
-                          !moreclarification ? "w-fit" : "w-full"
-                        } mt-2 bg-[#DFEBF680] bg-opacity-50 rounded p-2`}
-                      >
-                        <button
-                          onClick={handleMoreClarification}
-                          className="w-full flex justify-between items-center gap-2"
-                        >
-                          <p className="font-semibold text-[11px] text-[#2E5DB0]">
-                            ✨ Need more clarification on the section?
+                      {!question ? (
+                        <div>
+                          <p className="text-sm transition-all duration-300">
+                            Identify and categorize the various costs
+                            influencing margins. Costs are usually categorized
+                            as variable costs (which increase directly with an
+                            increase in sales or revenue – for example raw
+                            material costs for production), semi-variable costs
+                            (which increase with sales too, but not as linearly.
+                            For example – manpower costs for some services heavy
+                            business) and fixed costs (which are not linked to
+                            the volume of products/sales/revenue directly. For
+                            example – headquarter administration costs).
                           </p>
-                          <Image
-                            src={
-                              !moreclarification
-                                ? "/icons/addincircle.svg"
-                                : "/icons/addincircle_blue.svg"
-                            }
-                            width={13}
-                            height={12}
-                            alt="icon"
-                          />
-                        </button>
-                        {moreclarification ? (
-                          <>
-                            <div className="mt-2 flex flex-wrap gap-4">
-                              {moreClarificationQuestions.map((data, index) => (
-                                <button
-                                  key={index}
-                                  className="p-2.5 bg-white rounded-3xl flex items-center gap-2"
-                                >
-                                  <div
-                                    className={`${
-                                      index === 1
-                                        ? "bg-[#FFDEDF]"
-                                        : "bg-[#DDE3EE80] bg-opacity-50"
-                                    } p-1  rounded-full flex justify-center items-center`}
-                                  >
-                                    <Image
-                                      src={"/icons/incognito.svg"}
-                                      width={13}
-                                      height={12}
-                                      alt="icon"
-                                    />
-                                  </div>
-                                  <p className="text-xs">{data.question}</p>
-                                </button>
-                              ))}
-                            </div>
-                          </>
-                        ) : (
-                          <></>
-                        )}
-                      </motion.div>
+                          <button>
+                            <Image
+                              src={"/icons/from_HBR.svg"}
+                              width={65}
+                              height={9}
+                              alt="icon"
+                            />
+                          </button>
+                          {/* More clarification */}
+                          <motion.div
+                            layout
+                            transition={{ duration: 0.5 }}
+                            className={`${
+                              !moreclarification ? "w-fit" : "w-full"
+                            } mt-2 bg-[#DFEBF680] bg-opacity-50 rounded p-2`}
+                          >
+                            <button
+                              onClick={handleMoreClarification}
+                              className="w-full flex justify-between items-center gap-2"
+                            >
+                              <p className="font-semibold text-[11px] text-[#2E5DB0]">
+                                ✨ Need more clarification on the section?
+                              </p>
+                              <Image
+                                src={
+                                  !moreclarification
+                                    ? "/icons/addincircle.svg"
+                                    : "/icons/addincircle_blue.svg"
+                                }
+                                width={13}
+                                height={12}
+                                alt="icon"
+                              />
+                            </button>
+                            {moreclarification ? (
+                              <>
+                                <div className="mt-2 flex flex-wrap gap-4">
+                                  {moreClarificationQuestions.map(
+                                    (data, index) => (
+                                      <button
+                                        key={index}
+                                        className="p-2.5 bg-white rounded-3xl flex items-center gap-2"
+                                      >
+                                        <div
+                                          className={`${
+                                            index === 1
+                                              ? "bg-[#FFDEDF]"
+                                              : "bg-[#DDE3EE80] bg-opacity-50"
+                                          } p-1  rounded-full flex justify-center items-center`}
+                                        >
+                                          <Image
+                                            src={"/icons/incognito.svg"}
+                                            width={13}
+                                            height={12}
+                                            alt="icon"
+                                          />
+                                        </div>
+                                        <p className="text-xs">
+                                          {data.question}
+                                        </p>
+                                      </button>
+                                    )
+                                  )}
+                                </div>
+                              </>
+                            ) : (
+                              <></>
+                            )}
+                          </motion.div>
+                        </div>
+                      ) : (
+                        <></>
+                      )}
+
                       {/* Questions Section */}
                       <div className="pt-14 flex flex-col gap-8">
                         {stepOneQuestions.map((data, index) => (
@@ -291,9 +322,15 @@ export default function Home() {
                                 {data.question}
                               </h1>
                             </div>
-                            <button>
+                            <button
+                              onClick={() => handleStepOneQuestions(data.id)}
+                            >
                               <Image
-                                src={"/icons/add.svg"}
+                                src={
+                                  !question
+                                    ? "/icons/add.svg"
+                                    : "/icons/substract.svg"
+                                }
                                 width={17}
                                 height={18}
                                 alt="icon"
