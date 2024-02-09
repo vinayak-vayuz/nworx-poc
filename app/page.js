@@ -5,6 +5,7 @@ import { Inter } from "next/font/google";
 import Sidebar from "./components/sidebar";
 import MobileHeader from "./components/header";
 import { useRouter } from "next/navigation";
+import { motion } from "framer-motion";
 
 const inter = Inter({
   weight: ["400", "500", "600"],
@@ -117,10 +118,12 @@ export default function Home() {
           <></>
         )}
         {/* Steps Section */}
-        <div
-          className={`${
-            getstarted ? "fade-in" : "fade-in"
-          } pt-4 flex justify-center gap-6`}
+        <motion.div
+          layout
+          transition={{ duration: 0.3 }}
+          onAnimationStart={{ opacity: 0 }}
+          onAnimationEnd={{ opacity: 1 }}
+          className={`pt-4 flex justify-center gap-6`}
         >
           <div className="w-full md:w-[70%] flex flex-col gap-4">
             <div className="p-3 w-full min-h-20 bg-white rounded-xl flex flex-col gap-2">
@@ -239,7 +242,7 @@ export default function Home() {
             <div className="w-full min-h-[20rem] bg-[#000000] opacity-5 rounded-2xl"></div>
             <div className="w-full min-h-[20rem] bg-[#000000] opacity-5 rounded-2xl"></div>
           </div>
-        </div>
+        </motion.div>
       </div>
     </main>
   );
