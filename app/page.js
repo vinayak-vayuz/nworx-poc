@@ -14,7 +14,7 @@ const inter = Inter({
 
 export default function Home() {
   const [getstarted, setGetstarted] = useState(true);
-  const [moreclarification, setMoreclarification] = useState(false);
+  const [moreclarificationonsection, setMoreClarificationQuestion] = useState(false);
   const [question, setQuestion] = useState(false);
   const [modal, setModal] = useState();
   const router = useRouter();
@@ -24,7 +24,7 @@ export default function Home() {
   }
 
   function handleMoreClarification() {
-    setMoreclarification(!moreclarification);
+    setMoreClarificationQuestion(!moreclarificationonsection);
   }
   function handleQuestions() {
     setQuestion(!question);
@@ -52,8 +52,16 @@ export default function Home() {
             {
               Q1: "How do I connect this to my business context?",
               answers: [
-                { title: "", detail: "" },
-                { title: "", detail: "" },
+                {
+                  title: "Add warehouse costs as semi-variable cost",
+                  detail:
+                    "Personnel, real estate & utilities cost associated with central storage",
+                },
+                {
+                  title: "Add warehouse costs as semi-variable cost",
+                  detail:
+                    "Personnel, real estate & utilities cost associated with central storage",
+                },
               ],
             },
             { Q2: "Can I skip this?" },
@@ -144,7 +152,7 @@ export default function Home() {
                 <p className="pb-1 text-xs font-semibold">19 Nov • Monday</p>
                 <h1 className="text-2xl font-semibold">
                   Review the variable, semi-variable & fixed cost elements of
-                  the P&L.{" "}
+                  the P&L.
                 </h1>
                 <p>
                   Specifically evaluate opportunity areas where there is
@@ -267,12 +275,12 @@ export default function Home() {
                               alt="icon"
                             />
                           </button>
-                          {/* More clarification */}
+                          {/* More clarification on section */}
                           <motion.div
                             layout
                             transition={{ duration: 0.5 }}
                             className={`${
-                              !moreclarification ? "w-fit" : "w-full"
+                              !moreclarificationonsection ? "w-fit" : "w-full"
                             } mt-2 bg-[#DFEBF680] bg-opacity-50 rounded p-2`}
                           >
                             <button
@@ -284,7 +292,7 @@ export default function Home() {
                               </p>
                               <Image
                                 src={
-                                  !moreclarification
+                                  !moreclarificationonsection
                                     ? "/icons/addincircle.svg"
                                     : "/icons/addincircle_blue.svg"
                                 }
@@ -293,7 +301,7 @@ export default function Home() {
                                 alt="icon"
                               />
                             </button>
-                            {moreclarification ? (
+                            {moreclarificationonsection ? (
                               <>
                                 <div className="mt-2 flex flex-wrap gap-4">
                                   {moreClarificationQuestions.map(
@@ -379,34 +387,67 @@ export default function Home() {
                             </div>
                             {modal == data.id ? (
                               <>
-                                <div className="mt-2 flex flex-wrap gap-4">
-                                  {moreClarificationQuestions.map(
-                                    (data, index) => (
-                                      <button
-                                        key={index}
-                                        className="p-2.5 bg-white rounded-3xl flex items-center gap-2"
-                                      >
-                                        <div
-                                          className={`${
-                                            index === 1
-                                              ? "bg-[#FFDEDF]"
-                                              : "bg-[#DDE3EE80] bg-opacity-50"
-                                          } p-1  rounded-full flex justify-center items-center`}
-                                        >
-                                          <Image
-                                            src={"/icons/incognito.svg"}
-                                            width={13}
-                                            height={12}
-                                            alt="icon"
-                                          />
-                                        </div>
-                                        <p className="text-xs">
-                                          {data.question}
-                                        </p>
-                                      </button>
-                                    )
+                                {/* More clarification on question */}
+                                <motion.div
+                                  layout
+                                  transition={{ duration: 0.5 }}
+                                  className={`${
+                                    !moreclarificationonsection ? "w-fit" : "w-full"
+                                  } my-2 bg-[#DFEBF680] bg-opacity-50 rounded p-2`}
+                                >
+                                  <button
+                                    onClick={handleMoreClarification}
+                                    className="w-full flex justify-between items-center gap-2"
+                                  >
+                                    <p className="font-semibold text-[11px] text-[#2E5DB0]">
+                                      ✨ Need more clarification on the section?
+                                    </p>
+                                    <Image
+                                      src={
+                                        !moreclarificationonsection
+                                          ? "/icons/addincircle.svg"
+                                          : "/icons/addincircle_blue.svg"
+                                      }
+                                      width={13}
+                                      height={12}
+                                      alt="icon"
+                                    />
+                                  </button>
+                                  {moreclarificationonsection ? (
+                                    <>
+                                      <div className="mt-2 flex flex-wrap gap-4">
+                                        {moreClarificationQuestions.map(
+                                          (data, index) => (
+                                            <button
+                                              key={index}
+                                              className="p-2.5 bg-white rounded-3xl flex items-center gap-2"
+                                            >
+                                              <div
+                                                className={`${
+                                                  index === 1
+                                                    ? "bg-[#FFDEDF]"
+                                                    : "bg-[#DDE3EE80] bg-opacity-50"
+                                                } p-1  rounded-full flex justify-center items-center`}
+                                              >
+                                                <Image
+                                                  src={"/icons/incognito.svg"}
+                                                  width={13}
+                                                  height={12}
+                                                  alt="icon"
+                                                />
+                                              </div>
+                                              <p className="text-xs">
+                                                {data.question}
+                                              </p>
+                                            </button>
+                                          )
+                                        )}
+                                      </div>
+                                    </>
+                                  ) : (
+                                    <></>
                                   )}
-                                </div>
+                                </motion.div>
                                 <textarea
                                   placeholder="Type to respond"
                                   className="p-2 w-full min-h-[10rem] bg-[#F8F8F8] outline-none text-sm rounded"
