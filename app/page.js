@@ -45,6 +45,25 @@ export default function Home() {
       id: 1,
       question:
         "What are the primary components of variable & semi-variable costs impacting gross margins?",
+      answer: [
+        {
+          Q1: "Need clarification on the question ?",
+          answers: [
+            {
+              Q1: "How do I connect this to my business context?",
+              answers: [
+                { title: "", detail: "" },
+                { title: "", detail: "" },
+              ],
+            },
+            { Q2: "Can I skip this?" },
+            { Q3: "Why is this importatnt? " },
+            { Q4: "Simplify the question " },
+            { Q5: "I do not have enough information to answer this" },
+          ],
+        },
+        { Q2: "Help me get started" },
+      ],
     },
     {
       id: 2,
@@ -323,7 +342,10 @@ export default function Home() {
                         } flex flex-col gap-8`}
                       >
                         {stepOneQuestions.map((data, index) => (
-                          <div key={index} className="border-t border-opacity-5 pt-2">
+                          <div
+                            key={index}
+                            className="border-t border-opacity-5 pt-2"
+                          >
                             <div className="flex items-start justify-between gap-2">
                               <div>
                                 <p className="font-semibold text-xs text-black text-opacity-50">
@@ -385,7 +407,11 @@ export default function Home() {
                                     )
                                   )}
                                 </div>
-                                <textarea placeholder="Type to respond" className="p-2 w-full min-h-[10rem] bg-[#F8F8F8] outline-none text-sm rounded" type="text" />
+                                <textarea
+                                  placeholder="Type to respond"
+                                  className="p-2 w-full min-h-[10rem] bg-[#F8F8F8] outline-none text-sm rounded"
+                                  type="text"
+                                />
                               </>
                             ) : (
                               <></>
