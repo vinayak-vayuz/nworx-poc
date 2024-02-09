@@ -120,9 +120,9 @@ export default function Home() {
         {/* Steps Section */}
         <motion.div
           layout
-          transition={{ duration: 0.3 }}
-          onAnimationStart={{ opacity: 0 }}
-          onAnimationEnd={{ opacity: 1 }}
+          transition={{ duration: 0.5 }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
           className={`pt-4 flex justify-center gap-6`}
         >
           <div className="w-full md:w-[70%] flex flex-col gap-4">
