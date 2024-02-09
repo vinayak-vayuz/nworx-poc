@@ -102,7 +102,7 @@ export default function Home() {
   //   const moreQualificationExpanded = stepOneQuestions.filter((answers) => {
   //     return answers.id === id;
   //   });
-  //   const 
+  //   const
   //   console.log(moreQualificationExpanded);
   //   setQuestionExp(id);
   //   return moreQualificationExpanded;
@@ -477,6 +477,7 @@ export default function Home() {
                           </div>
                         ))}
                       </motion.div>
+                      <Accordion />
                     </>
                   )}
                 </div>
@@ -507,7 +508,6 @@ export default function Home() {
           </div>
         </motion.div>
       </div>
-      <Accordion/>
     </main>
   );
 }

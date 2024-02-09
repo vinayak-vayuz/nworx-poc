@@ -77,7 +77,7 @@ const SubLevelComp = ({ item, depth }) => {
         {item.title} {hasChildren(item) && <span>{selected ? "-" : "+"}</span>}
       </p>
       {selected && (
-        <div>
+        <div className="flex flex-wrap gap-4">
           {hasChildren(item) &&
             item.children.map((childItem, index) => (
               <SubLevelComp item={childItem} depth={depth + 1} key={index} />
@@ -90,7 +90,7 @@ const SubLevelComp = ({ item, depth }) => {
 
 function Accordion() {
   return (
-    <motion.div layout transition={{ duration: 0.5 }} className="react">
+    <motion.div layout transition={{ duration: 0.5 }} className="mt-10">
       {stepOneQuestions.map((item, index) => (
         <SubLevelComp item={item} depth={1} key={index} />
       ))}
