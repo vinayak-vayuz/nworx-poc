@@ -1,11 +1,11 @@
 "use client";
 import Image from "next/image";
 import { useState } from "react";
+import { motion } from "framer-motion";
 import { Inter } from "next/font/google";
 import Sidebar from "./components/sidebar";
 import MobileHeader from "./components/header";
 import { useRouter } from "next/navigation";
-import { motion } from "framer-motion";
 
 const inter = Inter({
   weight: ["400", "500", "600"],
@@ -97,6 +97,15 @@ export default function Home() {
     setQuestionExp(id);
     return stepOneExpanded;
   };
+  // const handleMoreQualificationByID = (id) => {
+  //   const moreQualificationExpanded = stepOneQuestions.filter((answers) => {
+  //     return answers.id === id;
+  //   });
+  //   const 
+  //   console.log(moreQualificationExpanded);
+  //   setQuestionExp(id);
+  //   return moreQualificationExpanded;
+  // };
   return (
     <main
       className={`${inter.className} flex flex-col md:flex-row min-h-screen`}
@@ -396,13 +405,13 @@ export default function Home() {
                                     layout
                                     transition={{ duration: 0.5 }}
                                     className={`${
-                                      !moreclarificationonsection
+                                      !moreclarificationonquestion
                                         ? "w-fit"
                                         : "w-full"
                                     } my-2 bg-[#DFEBF680] bg-opacity-50 rounded p-2`}
                                   >
                                     <button
-                                      onClick={handleMoreClarificationSection}
+                                      onClick={handleMoreClarificationQuestion}
                                       className="w-full flex justify-between items-center gap-2"
                                     >
                                       <p className="font-semibold text-[11px] text-[#2E5DB0]">
@@ -410,7 +419,7 @@ export default function Home() {
                                       </p>
                                       <Image
                                         src={
-                                          !moreclarificationonsection
+                                          !moreclarificationonquestion
                                             ? "/icons/addincircle.svg"
                                             : "/icons/addincircle_blue.svg"
                                         }
