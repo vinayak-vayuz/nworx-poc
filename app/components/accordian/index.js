@@ -4,15 +4,21 @@ import classNames from "classnames";
 import { motion } from "framer-motion";
 
 const Level4Component = () => {
+  const [levelfourcomponent, setLevelFourComponent] = useState(false);
+
+  const handleLevelFourComponent = () => {
+    setLevelFourComponent(!levelfourcomponent);
+  };
+
   return (
-    <div className="w-full group">
+    <div onClick={handleLevelFourComponent} className="w-full group">
       <div className="flex justify-between items-start gap-2">
         <Image src={"/icons/addtext.svg"} width={13} height={12} alt="icon" />
         <div>
           <p className="font-medium text-[11px] text-black text-opacity-50 group-hover:transition-all group-hover:duration-300 group-hover:ease-in-out">
             Add warehouse costs as semi-variable cost
           </p>
-          <p className="mt-2 group-hover:font-semibold group-hover:text-[#2E5DB0]">
+          <p className={`${!levelfourcomponent ? "block" : "hidden"} mt-2 group-hover:font-semibold group-hover:text-[#2E5DB0]`}>
             Energy and Utility costs are Lorem ipsum dolor sit amet...
           </p>
         </div>
@@ -25,6 +31,15 @@ const Level4Component = () => {
           />
         </div>
       </div>
+      {levelfourcomponent ? (
+        <div className="">
+          <p className="mt-2 font-semibold text-[#2E5DB0]">
+            Energy and Utility costs are Lorem ipsum dolor sit amet...
+          </p>
+        </div>
+      ) : (
+        <></>
+      )}
     </div>
   );
 };

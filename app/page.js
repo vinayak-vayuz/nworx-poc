@@ -354,7 +354,7 @@ export default function Home() {
                         <></>
                       )}
                       {/* Questions Section */}
-                      <motion.div
+                      {/* <motion.div
                         layout
                         transition={{ duration: 0.5 }}
                         className={`${
@@ -399,7 +399,7 @@ export default function Home() {
                             </div>
                             {questionexp == data.id ? (
                               <>
-                                {/* More clarification on question */}
+                                More clarification on question
                                 {data.answer.map((answer, index) => (
                                   <motion.div
                                     key={index}
@@ -462,7 +462,7 @@ export default function Home() {
                                         </>
                                         ) : (
                                           <></>
-                                        )} */}
+                                        )} 
                                   </motion.div>
                                 ))}
                                 <textarea
@@ -476,7 +476,7 @@ export default function Home() {
                             )}
                           </div>
                         ))}
-                      </motion.div>
+                      </motion.div> */}
                       <Accordion />
                     </>
                   )}
