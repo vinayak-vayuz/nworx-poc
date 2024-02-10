@@ -9,12 +9,21 @@ const CustomContent = () => {
       <div className="flex justify-between items-start gap-2">
         <Image src={"/icons/addtext.svg"} width={13} height={12} alt="icon" />
         <div>
-          <p className="font-medium text-[11px] text-black text-opacity-50">
+          <p className="font-medium text-[11px] text-black text-opacity-50 group-hover:transition-all group-hover:duration-300 group-hover:ease-in-out">
             Add warehouse costs as semi-variable cost
           </p>
-          <p className="mt-2 group-hover:font-semibold group-hover:text-[#2E5DB0]">Energy and Utility costs are Lorem ipsum dolor sit amet...</p>
+          <p className="mt-2 group-hover:font-semibold group-hover:text-[#2E5DB0]">
+            Energy and Utility costs are Lorem ipsum dolor sit amet...
+          </p>
         </div>
-        <Image src={"/icons/dropdown.svg"} width={13} height={12} alt="icon" />
+        <div className="p-0.5 flex justify-center items-center group-hover:bg-[#DFEBF6D9] rounded-full">
+          <Image
+            src={"/icons/dropdown.svg"}
+            width={13}
+            height={12}
+            alt="icon"
+          />
+        </div>
       </div>
     </div>
   );
@@ -53,7 +62,17 @@ const stepOneQuestions = [
           },
         ],
       },
-      { id: "1B", title: "Help me get started" },
+      {
+        id: "1B",
+        title: "Help me get started",
+        children: [
+          {
+            id: "1B1",
+            title: "Give me an example response",
+          },
+          { id: "1B2", title: "Ideas to get started" },
+        ],
+      },
     ],
   },
   {
