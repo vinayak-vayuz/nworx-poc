@@ -3,7 +3,7 @@ import { useState } from "react";
 import classNames from "classnames";
 import { motion } from "framer-motion";
 
-const CustomContent = () => {
+const Level4Component = () => {
   return (
     <div className="w-full group">
       <div className="flex justify-between items-start gap-2">
@@ -45,11 +45,11 @@ const stepOneQuestions = [
             children: [
               {
                 id: "1A1A",
-                component: <CustomContent />,
+                component: <Level4Component />,
               },
               {
                 id: "1A1B",
-                component: <CustomContent />,
+                component: <Level4Component />,
               },
             ],
           },
