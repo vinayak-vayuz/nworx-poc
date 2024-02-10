@@ -2,6 +2,14 @@ import { useState } from "react";
 import classNames from "classnames";
 import { motion } from "framer-motion";
 
+const CustomContent = () => {
+  return (
+    <div className="w-full ">
+      <p className="text-[11px]">Add warehouse costs as semi-variable cost</p>
+    </div>
+  );
+};
+
 const stepOneQuestions = [
   {
     id: 1,
@@ -18,11 +26,11 @@ const stepOneQuestions = [
             children: [
               {
                 id: "1A1A",
-                title: "Add warehouse costs as semi-variable cost",
+                component: <CustomContent />,
               },
               {
                 id: "1A1B",
-                title: "Add warehouse costs as semi-variable cost",
+                component: <CustomContent />,
               },
             ],
           },
@@ -110,6 +118,7 @@ const SubLevelComp = ({ index, item, depth, isFirstDepth }) => {
             ))}
         </div>
       )}
+      {item.component && <div>{item.component}</div>}
     </motion.div>
   );
 };
