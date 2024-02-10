@@ -11,14 +11,26 @@ const Level4Component = () => {
   };
 
   return (
-    <div onClick={handleLevelFourComponent} className="w-full group">
+    <motion.div
+      layout
+      transition={{ duration: 0.5 }}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      onClick={handleLevelFourComponent}
+      className="w-full group"
+    >
       <div className="flex justify-between items-start gap-2">
         <Image src={"/icons/addtext.svg"} width={13} height={12} alt="icon" />
         <div>
           <p className="font-medium text-[11px] text-black text-opacity-50 group-hover:transition-all group-hover:duration-300 group-hover:ease-in-out">
             Add warehouse costs as semi-variable cost
           </p>
-          <p className={`${!levelfourcomponent ? "block" : "hidden"} mt-2 group-hover:font-semibold group-hover:text-[#2E5DB0]`}>
+          <p
+            className={`${
+              !levelfourcomponent ? "block" : "hidden"
+            } mt-2 group-hover:font-semibold group-hover:text-[#2E5DB0]`}
+          >
             Energy and Utility costs are Lorem ipsum dolor sit amet...
           </p>
         </div>
@@ -32,15 +44,43 @@ const Level4Component = () => {
         </div>
       </div>
       {levelfourcomponent ? (
-        <div className="">
+        <div>
           <p className="mt-2 font-semibold text-[#2E5DB0]">
             Energy and Utility costs are Lorem ipsum dolor sit amet...
           </p>
+          <div className="mt-4 mb-2 flex flex-wrap gap-2">
+            <button className="px-2.5 py-1.5 flex justify-center items-center gap-1 text-[10px] bg-[#2E5DB0] text-white rounded-xl">
+              ACCEPT{" "}
+              <Image
+                src={"/icons/down_circle_blue.svg"}
+                width={12}
+                height={11}
+                alt="icon"
+              />
+            </button>
+            <button className="px-2.5 py-1.5 flex justify-center items-center gap-1 text-[10px] bg-[#000000] bg-opacity-5 text-black rounded-xl">
+              DISMISS{" "}
+              <Image
+                src={"/icons/cross.svg"}
+                width={12}
+                height={11}
+                alt="icon"
+              />
+            </button>
+            <button>
+              <Image
+                src={"/icons/menu_dots.svg"}
+                width={12}
+                height={11}
+                alt="icon"
+              />
+            </button>
+          </div>
         </div>
       ) : (
         <></>
       )}
-    </div>
+    </motion.div>
   );
 };
 
