@@ -1,11 +1,21 @@
+import Image from "next/image";
 import { useState } from "react";
 import classNames from "classnames";
 import { motion } from "framer-motion";
 
 const CustomContent = () => {
   return (
-    <div className="w-full ">
-      <p className="text-[11px]">Add warehouse costs as semi-variable cost</p>
+    <div className="w-full group">
+      <div className="flex justify-between items-start gap-2">
+        <Image src={"/icons/addtext.svg"} width={13} height={12} alt="icon" />
+        <div>
+          <p className="font-medium text-[11px] text-black text-opacity-50">
+            Add warehouse costs as semi-variable cost
+          </p>
+          <p className="mt-2 group-hover:font-semibold group-hover:text-[#2E5DB0]">Energy and Utility costs are Lorem ipsum dolor sit amet...</p>
+        </div>
+        <Image src={"/icons/dropdown.svg"} width={13} height={12} alt="icon" />
+      </div>
     </div>
   );
 };
