@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { useState } from "react";
 import classNames from "classnames";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 
 const Level4Component = () => {
   const [levelfourcomponent, setLevelFourComponent] = useState(false);
@@ -209,21 +209,19 @@ const SubLevelComp = ({ index, item, depth, isFirstDepth }) => {
 
 function Accordion() {
   return (
-    <motion.div
-      layout
-      transition={{ duration: 0.5 }}
-      className="mt-10 flex flex-col gap-8"
-    >
-      {stepOneQuestions.map((item, index) => (
-        <SubLevelComp
-          index={index}
-          item={item}
-          depth={1}
-          key={index}
-          isFirstDepth={index === 0 || 1 || 2}
-        />
-      ))}
-    </motion.div>
+    <AnimatePresence>
+      <div className="mt-10 flex flex-col gap-8">
+        {stepOneQuestions.map((item, index) => (
+          <SubLevelComp
+            index={index}
+            item={item}
+            depth={1}
+            key={index}
+            isFirstDepth={index === 0 || 1 || 2}
+          />
+        ))}
+      </div>
+    </AnimatePresence>
   );
 }
 

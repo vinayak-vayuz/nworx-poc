@@ -78,7 +78,9 @@
 }
 
 .level-3 {
+  /* position: relative; */
   margin-top: 6px;
+  padding-left: 1rem;
   background-color: white;
   font-size: 12px;
   font-weight: 400;
@@ -86,11 +88,24 @@
   letter-spacing: 0em;
   padding: 0.5rem;
   border-radius: 16px;
-  gap: 8px;
+  /* display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px; */
 }
+/* .level-3::before {
+  padding: 4px;
+  background-color: #FFDEDF;
+  content: url("/icons/incognito.svg");
+  border-radius: 9999;
+  position: absolute;
+  left: 0.5rem; 
+  top: 50%;
+  transform: translateY(-50%);
+} */
 .level-4 {
   margin-top: 6px;
-  background-color: #F7F8FB;
+  background-color: #f7f8fb;
   padding: 10px;
   /* font-size: 12px;
   font-weight: 500; */
