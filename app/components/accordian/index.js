@@ -89,6 +89,7 @@ const stepOneQuestions = [
     id: 1,
     title:
       "What are the primary components of variable & semi-variable costs impacting gross margins?",
+    component: <></>,
     children: [
       {
         id: "1A",
@@ -134,10 +135,12 @@ const stepOneQuestions = [
     id: 2,
     title:
       "Which are the various fixed costs and to what extent do they impact margin profile of the business?",
+    component: <></>,
   },
   {
     id: 3,
     title: "Are there any hidden or overlooked costs that need consideration?",
+    component: <></>,
   },
 ];
 
